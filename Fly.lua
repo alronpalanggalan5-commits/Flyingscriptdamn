@@ -1,4 +1,3 @@
--- Save this part to a site like Pastebin or GitHub
 local player = game.Players.LocalPlayer
 local mouse = player:GetMouse()
 local flying = false
@@ -17,9 +16,9 @@ function fly()
     char.Humanoid.PlatformStand = true
     
     repeat
-        wait()
-        bv.velocity = (game.Workspace.CurrentCamera.CFrame.LookVector * speed)
-        bg.cframe = game.Workspace.CurrentCamera.CFrame
+        task.wait()
+        bv.velocity = (workspace.CurrentCamera.CFrame.LookVector * speed)
+        bg.cframe = workspace.CurrentCamera.CFrame
     until not flying
     
     bv.Parent = nil
@@ -27,7 +26,7 @@ function fly()
     char.Humanoid.PlatformStand = false
 end
 
-mouse.KeyDown:connect(function(key)
+mouse.KeyDown:Connect(function(key)
     if key:lower() == "e" then
         if flying then flying = false else fly() end
     end
